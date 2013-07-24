@@ -3,12 +3,13 @@
 '''Classes'''
 
 class StockItem(object):
-    def __init__(self):
-        uniqueID
-        clientName
-        pricePerUnit
-        warehouseNumber
-        
+    self.runningTotal = 0
+    def __init__(self, clientNameStr, pricePerUnitFloat=0.0, warehouseNumberInt):
+        self.uniqueID = (self.runningTotal)
+        self.__clientName = clientNameStr
+        self.pricePerUnit = pricePerUnitFloat
+        self.warehouseNumber = warehouseNumberInt
+        self.runningTotal += 1
     def __str__(self):
         pass
     
@@ -24,10 +25,10 @@ class StockItem(object):
 
 class CD(StockItem):
     def __init__(self):
-        title
-        dateReleased
-        genre
-        artist
+        self.title
+        self.dateReleased
+        self.genre
+        self.artist
     
     def __str__(self):
         pass
@@ -41,10 +42,10 @@ class CD(StockItem):
     
 class Book(StockItem):
     def __init__(self):
-        title
-        dateReleased
-        genre
-        author
+        self.title
+        self.dateReleased
+        self.genre
+        self.author
 
     def __str__(self):
         pass

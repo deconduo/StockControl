@@ -3,24 +3,31 @@
 '''Classes'''
 
 class StockItem(object):
-    self.runningTotal = 0
+    self.stockItemCount = 0
+    self.pricePerUnitCount = 0.0
+    
     def __init__(self, clientNameStr, pricePerUnitFloat=0.0, warehouseNumberInt):
-        self.uniqueID = (self.runningTotal)
+        self.uniqueID = (self.stockItemCount)
         self.__clientName = clientNameStr
         self.pricePerUnit = pricePerUnitFloat
         self.warehouseNumber = warehouseNumberInt
-        self.runningTotal += 1
+        self.stockItemCount += 1
+        self.pricePerUnitCount += pricePerUnitFloat
+        
     def __str__(self):
-        pass
+        stockDescription = "Stock ID: %s, Price Per Unit: %s, Warehouse Number: %s" % self.uniqueID, self.pricePerUnit, self.warehouseNumber
     
-    def stockAdd(self):
-        pass
+    def __add__(self, stockItem1, stockItem2):
+        totalPrice = stockItem1.pricePerUnit + stockItem2.pricePerUnit
+        return totalPrice
     
-    def stockMultiply(self):
-        pass
+    def __mul__(self, stockItem, amountInt):
+        totalPrice = stockItem.pricePerUnit * amountInt
+        return totalPrice
     
-    def CalculateStorageCost(self):
-        pass
+    def CalculateStorageCost(self, stockItem):
+        storageCost = stockItem.pricePerUnit * 0.05
+        return storageCost
 
 
 class CD(StockItem):

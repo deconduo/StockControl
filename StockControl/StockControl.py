@@ -1,10 +1,10 @@
 '''Imports'''
-from StockItemClass import StockItem
-from CDClass import CD
-from BookClass import Book
-from StockRepositoryClass import StockRepository
-from StockExceptionClass import StockException
-from TestClass import Test
+from StockItemClass import *
+from CDClass import *
+from BookClass import *
+from StockRepositoryClass import *
+from StockExceptionClass import *
+from TestClass import *
 
 
 '''Main Program'''

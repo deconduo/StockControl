@@ -1,16 +1,16 @@
 '''Imports'''
-import StockItem
-import CD
-import Book
-import StockRepository
-import StockException
-import TestClass
+from StockItemClass import StockItem
+from CDClass import CD
+from BookClass import Book
+from StockRepositoryClass import StockRepository
+from StockExceptionClass import StockException
+from TestClass import Test
 
 
 '''Main Program'''
 
 def main():
-    myTest = TestClass()
+    myTest = Test()
     myTest.test()
     
 if __name__ == "__main__":

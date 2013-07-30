@@ -1,4 +1,4 @@
-class TestClass(object):
+class Test(object):
     def test(self):
         # Create 5 CDs and 5 Books
         testCD1 = CD("Test CD 1", "20/3/2013", "Rock", "Test Artist 1", "Test Client 1", 1, 10.00)

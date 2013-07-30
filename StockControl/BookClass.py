@@ -1,4 +1,4 @@
-import StockItem
+from StockItemClass import StockItem
 
 class Book(StockItem):
     def __init__(self, titleStr, dateStr, genreStr, authorStr, clientNameStr, warehouseNumberInt, pricePerUnitFloat):

@@ -1,4 +1,4 @@
-from StockItem import StockItem
+import StockItem
 
 class CD(StockItem):
     def __init__(self, titleStr, dateStr, genreStr, artistStr, clientNameStr, warehouseNumberInt, pricePerUnitFloat):

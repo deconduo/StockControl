@@ -1,9 +1,9 @@
 '''Imports'''
 
-from CDClass import CD
-from BookClass import Book
-from StockRepositoryClass import StockRepository
-from StockExceptionClass import StockException
+from ..Classes.CDClass import CD
+from ..Classes.BookClass import Book
+from ..Classes.StockRepositoryClass import StockRepository
+from ..Classes.StockExceptionClass import StockException
 
 '''Classes'''
 

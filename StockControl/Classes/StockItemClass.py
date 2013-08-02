@@ -17,43 +17,31 @@ class StockItem(object):
         # Set the uniqueID
         self.uniqueID = StockItem.stockItemCount
         
-        # Set the clientName, test to make sure it is a string. If not, set it to a default value and raise an exception
-        try:
-            if isinstance(clientNameStr, str) == True:
-                self.__clientName = clientNameStr
+        # Set the clientName, test to make sure it is a string.
+        if isinstance(clientNameStr, str) == True:
+            self.__clientName = clientNameStr
+        else:
+            raise StockException('StockItem', '__init__', 'Client name must be a string.')
+  
+        # Set the pricePerUnit, test to make sure it a non-negative number.
+        if isinstance(pricePerUnitFloat, float) == True or isinstance(pricePerUnitFloat, int) == True:
+            if pricePerUnitFloat >= 0 :
+                self.pricePerUnit = float(pricePerUnitFloat)
             else:
-                self.__clientName = 'Client Name'
-                raise StockException('StockItem', '__init__', 'Client name must be a string. Value has been set to a default name.')
-        except StockException as error:
-            print error    
-        
-        # Set the pricePerUnit, test to make sure it a non-negative number. If not, set it to a default value and raise an exception
-        try:    
-            if isinstance(pricePerUnitFloat, float) == True or isinstance(pricePerUnitFloat, int) == True:
-                if pricePerUnitFloat >= 0 :
-                    self.pricePerUnit = float(pricePerUnitFloat)
-                else:
-                    self.pricePerUnit = 0.00
-                    raise StockException('StockItem', '__init__', 'Price per unit can not be set to a negative value. Value has been set to a default of 0.')
-            else:
-                self.pricePerUnit = 0.00
-                raise StockException('StockItem', '__init__', 'Price per unit must be a number. Value has been set to a default of 0.')
-        except StockException as error:
-            print error
-        
-        # Sets the warehouseNumber, test to make sure it a number between 1 and 4. If not, set it to a default value and raise an exception        
-        try:    
-            if isinstance(warehouseNumberInt, int) == True:
-                if 0 < warehouseNumberInt < 5:
-                    self.warehouseNumber = warehouseNumberInt
-                else:
-                    self.warehouseNumber = 1
-                    raise StockException('StockItem', '__init__', 'Warehouse number must be between 1 and 4. Value has been set to a default of 1.')
+                raise StockException('StockItem', '__init__', 'Price per unit can not be set to a negative value.')
+        else:
+            raise StockException('StockItem', '__init__', 'Price per unit must be a number.')
+
+        # Sets the warehouseNumber, test to make sure it a number between 1 and 4.      
+        if isinstance(warehouseNumberInt, int) == True:
+            if 0 < warehouseNumberInt < 5:
+                self.warehouseNumber = warehouseNumberInt
             else:
                 self.warehouseNumber = 1
-                raise StockException('StockItem', '__init__', 'Warehouse number must be an integer. Value has been set to a default of 1.')
-        except StockException as error:
-            print error
+                raise StockException('StockItem', '__init__', 'Warehouse number must be between 1 and 4. Value has been set to a default of 1.')
+        else:
+            self.warehouseNumber = 1
+            raise StockException('StockItem', '__init__', 'Warehouse number must be an integer. Value has been set to a default of 1.')
         
         # Add one to the stockItemCount
         StockItem.stockItemCount += 1
@@ -71,33 +59,28 @@ class StockItem(object):
     
     # Adds the pricePerUnit of a StockItem with another, or with a number    
     def __add__(self, stockItem):
-        try:
-            # Tests to see if the value passed is a StockItem or a number. If not, raises and exception.
-            print 'Adding StockItems'
-            if isinstance(stockItem, StockItem) == True:
-                totalPrice = self.pricePerUnit + stockItem.pricePerUnit
-            elif isinstance(stockItem, float) == True or isinstance(stockItem, int) == True:
-                totalPrice = self.pricePerUnit + stockItem
-            else:
-                raise StockException('StockItem', '__add__', 'Can only add StockItems or numbers.')
-            return float(totalPrice)
         
-        except StockException as error:
-            print error
+        # Tests to see if the value passed is a StockItem or a number. If not, raises and exception.
+        print 'Adding StockItems'
+        if isinstance(stockItem, StockItem) == True:
+            totalPrice = self.pricePerUnit + stockItem.pricePerUnit
+        elif isinstance(stockItem, float) == True or isinstance(stockItem, int) == True:
+            totalPrice = self.pricePerUnit + stockItem
+        else:
+            raise StockException('StockItem', '__add__', 'Can only add StockItems or numbers.')
+        return float(totalPrice)
     
     # Multiplies the pricePerUnit of a StockItem by an integer
     def __mul__(self, amountInt):
-        try:
-            # Tests to make sure that an integer has been given. If not, raises an exception.
-            print 'Multiplying a StockItem'
-            if isinstance(amountInt, int) == True:
-                totalPrice = self.pricePerUnit * amountInt
-            else:
-                raise StockException('StockItem', '__mul__', 'Can only multiply by an integer.')
-            return float(totalPrice)
         
-        except StockException as error:
-            print error
+        # Tests to make sure that an integer has been given. If not, raises an exception.
+        print 'Multiplying a StockItem'
+        if isinstance(amountInt, int) == True:
+            totalPrice = self.pricePerUnit * amountInt
+        else:
+            raise StockException('StockItem', '__mul__', 'Can only multiply by an integer.')
+        return float(totalPrice)
+
     
     # Calculates the storage cost of an item.
     def CalculateStorageCost(self):

@@ -5,7 +5,6 @@ from StockControl.Tests.CDTest import CDTest
 from StockControl.Tests.BookTest import BookTest
 from StockControl.Tests.StockRepositoryTest import StockRepositoryTest
 
-
 '''Main Program'''
 
 def main():

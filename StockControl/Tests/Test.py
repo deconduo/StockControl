@@ -9,15 +9,6 @@ from ..Classes.StockExceptionClass import StockException
 
 class Test(object):
     def test(self):
-
-        
-        
-            
-        testRepository.EnterStock(testCD1)
-        
-        print testCD1.IsAPreRelease()
-        print testCD5.IsAPreRelease()
-        
         # Calculate total holding price for all new items
         total = 0
         for stockItem in newStock:

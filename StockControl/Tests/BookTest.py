@@ -1,7 +1,9 @@
+'''Imports'''
 import unittest
 from ..Classes.BookClass import Book
 from ..Classes.StockExceptionClass import StockException
 
+'''Classes'''
 class BookTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -12,7 +14,7 @@ class BookTest(unittest.TestCase):
     # Tests the __str__ function
     def testStr(self):
         self.testBook1 = Book("Test Book 1", "11/3/2013", "Rock", "Test Author 1", "Test Client 6", 2, 21.00)
-        self.assertEqual(self.testBook1.__str__(), "----------\n" + super(Book, self.testBook1).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Author: %s\n----------" % (self.testBook1.title, self.testBook1.GetDateReleased(), self.testBook1.genre, self.testBook1.author))
+        self.assertEqual(self.testBook1.__str__(), "----------\n" + super(Book, self.testBook1).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Author: %s" % (self.testBook1.title, self.testBook1.GetDateReleased(), self.testBook1.genre, self.testBook1.author))
         
     # Tests that the title must be a string. Gives an array instead, and tests for an exception.
     def testInitTitleException1(self):

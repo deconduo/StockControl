@@ -7,8 +7,11 @@ from ..Classes.StockExceptionClass import StockException
 
 '''Classes'''
 
-class Test(object):
+class TestClass(object):
     def test(self):
+        # Set up a new Repository
+        testRepository = StockRepository()
+        
         # Create 5 CDs and 5 Books
         testCD1 = CD("Test CD 1", "1/3/2013", "Rock", "Test Artist 1", "Test Client 1", 1, 11.00)
         testCD2 = CD("Test CD 2", "2/3/2013", "Metal", "Test Artist 2", "Test Client 2", 2, 12.00)
@@ -20,25 +23,22 @@ class Test(object):
         testBook3 = Book("Test Book 3", "13/3/2013", "Metal", "Test Author 3", "Test Client 8", 4, 23.00)
         testBook4 = Book("Test Book 4", "14/3/2013", "Metal", "Test Author 4", "Test Client 9", 1, 24.00)
         testBook5 = Book("Test Book 5", "15/3/2013", "Blues", "Test Author 5", "Test Client 10", 2, 25.00)
+        
         # Add items to an array
         newStock = [testCD1, testCD2, testCD3, testCD4, testCD5, testBook1, testBook2, testBook3, testBook4, testBook5]
-        # Set up a new Repository
-        testRepository = StockRepository()
+        
         # Calculate total holding price for all new items
-        
-        for stockItem in newStock:
-            testRepository.EnterStock(stockItem)
-        
         total = 0
         for stockItem in newStock:
             total += stockItem.CalculateStorageCost()
         print "Total holding price: %.2f" % (total)
         
-        # Print all the stock in the Repository
+        # Enter items into the repository
+        for stockItem in newStock:
+            testRepository.EnterStock(stockItem)
         
-        print testRepository.stockCollection
-        
-        print testRepository
+        # Print all the stock in the repository
+        print "Repository contains:\n",testRepository
         
         # Add all stock in warehouse 4
         value = testRepository.AddAllStockInWarehouse(4)
@@ -55,3 +55,6 @@ class Test(object):
         # Delete all stock
         for stockItem in newStock:
             testRepository.DeleteStock(stockItem.uniqueID)
+            
+        # Print all the stock in the repository (should now be empty)
+        print "Repository contains:\n",testRepository

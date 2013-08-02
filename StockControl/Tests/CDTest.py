@@ -1,7 +1,9 @@
+'''Imports'''
 import unittest
 from ..Classes.CDClass import CD
 from ..Classes.StockExceptionClass import StockException
 
+'''Classes'''
 class CDTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -12,7 +14,7 @@ class CDTest(unittest.TestCase):
     # Tests the __str__ function
     def testStr(self):
         self.testCD1 = CD("Test CD 1", "1/3/2013", "Rock", "Test Artist 1", "Test Client 1", 1, 11.00)
-        self.assertEqual(self.testCD1.__str__(), "----------\n" + super(CD, self.testCD1).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Artist: %s\n----------" % (self.testCD1.title, self.testCD1.GetDateReleased(), self.testCD1.genre, self.testCD1.artist))
+        self.assertEqual(self.testCD1.__str__(), "----------\n" + super(CD, self.testCD1).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Artist: %s" % (self.testCD1.title, self.testCD1.GetDateReleased(), self.testCD1.genre, self.testCD1.artist))
 
     # Tests that the title must be a string. Gives an array instead, and tests for an exception.
     def testInitTitleException1(self):

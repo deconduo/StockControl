@@ -39,14 +39,14 @@ class StockRepository(object):
                         self.stockCollection[uniqueIDs].warehouseNumber = warehouseNumberInt
                     else:
                         raise StockException('StockRepository', 'MoveStock', 'The Unique ID given was not found in repository')
-                elif isinstance(uniqueIDs, array) == True:
+                elif isinstance(uniqueIDs, list) == True:
                     for ID in uniqueIDs:               
                         if ID in self.stockCollection:
                             self.stockCollection[ID].warehouseNumber = warehouseNumberInt
                         else:
                             raise StockException('StockRepository', 'MoveStock', 'At least one Unique ID was not found in repository')
                 else:
-                    raise StockException('StockRepository', 'MoveStock', 'You must provide either a single uniqueID or an array of uniqueIDs')
+                    raise StockException('StockRepository', 'MoveStock', 'You must provide either a single uniqueID or a list of uniqueIDs')
             else:
                 raise StockException('StockRepository', 'MoveStock', 'Warehouse number must be between 1 and 4.')
         else:
@@ -62,14 +62,14 @@ class StockRepository(object):
             else:
                 raise StockException('StockRepository', 'DeleteStock', 'The Unique ID given was not found in repository')
             
-        elif isinstance(uniqueIDs, array) == True:
+        elif isinstance(uniqueIDs, list) == True:
             for ID in uniqueIDs:               
                 if ID in self.stockCollection:
                     del self.stockCollection[ID]
                 else:
                     raise StockException('StockRepository', 'DeleteStock', 'At least one Unique ID was not found in repository')
         else:
-            raise StockException('StockRepository', 'DeleteStock', 'You must provide either a single uniqueID or an array of uniqueIDs')
+            raise StockException('StockRepository', 'DeleteStock', 'You must provide either a single uniqueID or a list of uniqueIDs')
     
     # Adds up all the stock in a warehouse. Checks that the warehouse number given is viable.
     def AddAllStockInWarehouse(self, warehouseNumberInt):

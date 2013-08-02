@@ -50,7 +50,7 @@ class Book(StockItem):
     def __str__(self):
         
         # print 'Printing book information'
-        BookDescription = "----------\n" + super(Book, self).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Author: %s\n----------" % (self.title, self.GetDateReleased(), self.genre, self.author)
+        BookDescription = "----------\n" + super(Book, self).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Author: %s" % (self.title, self.GetDateReleased(), self.genre, self.author)
         return BookDescription
     
     # Returns the dateReleased in the format DD/MonthName/YYYY.

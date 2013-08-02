@@ -47,7 +47,7 @@ class CD(StockItem):
     def __str__(self):
         
         # print 'Printing CD information'
-        CDDescription = "----------\n" + super(CD, self).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Artist: %s\n----------" % (self.title, self.GetDateReleased(), self.genre, self.artist)
+        CDDescription = "----------\n" + super(CD, self).__str__() + "\n Title: %s, Release Date: %s, Genre: %s, Artist: %s" % (self.title, self.GetDateReleased(), self.genre, self.artist)
         return CDDescription
     
     # Returns the dateReleased in the format DD/MonthName/YYYY.

@@ -8,19 +8,16 @@ from ..Classes.StockExceptionClass import StockException
 # Tests for the StockItem Class
 class StockItemTest(unittest.TestCase):
     
-    # Creates two StockItems for each test.
     def setUp(self):
-        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
-        self.testItem2 = StockItem("Test Client 2", 2, 12.00)
-        
+        pass
     
-    # Resets the StockCount after each test.
     def tearDown(self):
         pass
     
     # Tests the __str__ function
     def testStr(self):
-        self.assertEqual(self.testItem1.__str__(), "Stock ID: 22, Price Per Unit: 11.00, Warehouse Number: 1")
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
+        self.assertEqual(self.testItem1.__str__(), "Stock ID: %s, Price Per Unit: %.2f, Warehouse Number: %s" % (self.testItem1.uniqueID, self.testItem1.pricePerUnit, self.testItem1.warehouseNumber))
     
     # Tests that the clientName must be a string. Gives an array instead, and tests for an exception.
     def testInitClientException(self):
@@ -44,30 +41,37 @@ class StockItemTest(unittest.TestCase):
 
     # Tests that the addition method is working when adding two stockItems.
     def testAddItems(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
+        self.testItem2 = StockItem("Test Client 2", 2, 12.00)
         self.testAdd = self.testItem1 + self.testItem2
         self.assertEqual(self.testAdd, 23.00)
     
     # Tests that the addition method is working when adding a stockItem to a number.
     def testAddNumber(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
         self.testAdd = self.testItem1 + 12.00
         self.assertEqual(self.testAdd, 23.00)
         
     # Tests that the addition method works only with numbers and stockItems. Gives a string instead, and tests for an exception.
     def testAddException(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
         with self.assertRaises(StockException):
             self.testItem1 + "Not a number or stockItem"
     
     # Tests that calculateStorageCost method is working.
     def testCalculateStorageCost(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
         self.storageCost = self.testItem1.CalculateStorageCost()
         self.assertEqual(self.storageCost, 0.55)
 
     # Tests multiply method is working.
     def testMultItem(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
         self.testMult = self.testItem1 * 5
         self.assertEqual(self.testMult, 55.00)
     
     # Tests multiply method works only with integers. Gives a float instead, and tests for an exception.
     def testMultException(self):
+        self.testItem1 = StockItem("Test Client 1", 1, 11.00)
         with self.assertRaises(StockException):
             self.testItem1 * 5.5

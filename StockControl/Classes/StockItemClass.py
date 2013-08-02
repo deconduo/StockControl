@@ -8,11 +8,12 @@ class StockItem(object):
     stockItemCount = 0
     
     # Running count of total price per unit of all items
-    pricePerUnitCount = 0.0
+    pricePerUnitCount = 0.00
     
     # Creates a new StockItem
     def __init__(self, clientNameStr, warehouseNumberInt, pricePerUnitFloat=0.00):
-        print 'Creating a StockItem'
+        
+        # print 'Creating a StockItem'
 
         # Set the uniqueID
         self.uniqueID = StockItem.stockItemCount
@@ -37,31 +38,29 @@ class StockItem(object):
             if 0 < warehouseNumberInt < 5:
                 self.warehouseNumber = warehouseNumberInt
             else:
-                self.warehouseNumber = 1
                 raise StockException('StockItem', '__init__', 'Warehouse number must be between 1 and 4. Value has been set to a default of 1.')
         else:
-            self.warehouseNumber = 1
             raise StockException('StockItem', '__init__', 'Warehouse number must be an integer. Value has been set to a default of 1.')
         
         # Add one to the stockItemCount
         StockItem.stockItemCount += 1
         
-        
         # Add the item's pricePerUnit to the pricePerUnitCount
         StockItem.pricePerUnitCount += self.pricePerUnit
         
-
     # Prints information about the item    
     def __str__(self):
-        print 'Printing StockItem information'
+        
+        # print 'Printing StockItem information'
         stockDescription = "Stock ID: %s, Price Per Unit: %.2f, Warehouse Number: %s" % (self.uniqueID, self.pricePerUnit, self.warehouseNumber)
         return stockDescription
     
     # Adds the pricePerUnit of a StockItem with another, or with a number    
     def __add__(self, stockItem):
         
+        # print 'Adding StockItems'
+        
         # Tests to see if the value passed is a StockItem or a number. If not, raises and exception.
-        print 'Adding StockItems'
         if isinstance(stockItem, StockItem) == True:
             totalPrice = self.pricePerUnit + stockItem.pricePerUnit
         elif isinstance(stockItem, float) == True or isinstance(stockItem, int) == True:
@@ -73,8 +72,9 @@ class StockItem(object):
     # Multiplies the pricePerUnit of a StockItem by an integer
     def __mul__(self, amountInt):
         
+        # print 'Multiplying a StockItem'
+        
         # Tests to make sure that an integer has been given. If not, raises an exception.
-        print 'Multiplying a StockItem'
         if isinstance(amountInt, int) == True:
             totalPrice = self.pricePerUnit * amountInt
         else:
@@ -84,6 +84,7 @@ class StockItem(object):
     
     # Calculates the storage cost of an item.
     def CalculateStorageCost(self):
-        print 'Calculating storage cost of a StockItem'
+        
+        # print 'Calculating storage cost of a StockItem'
         storageCost = self.pricePerUnit * 0.05
         return storageCost
